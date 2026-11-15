@@ -8,6 +8,60 @@ copying code, assets, or branding.
 The skill is target-agnostic. It contains no sample-specific paths, product
 names, or reverse-engineering results.
 
+## Characteristics
+
+- **Target-agnostic** — works with any Windows PE file, not a specific product.
+- **Defensive by default** — static triage first; execution only in an isolated
+  VM and only with permission.
+- **Clean-room oriented** — documents behavior and interfaces without copying
+  code, assets, icons, logos, or branding.
+- **Evidence-driven** — hashes, timestamps, commands, and confidence levels are
+  recorded so another analyst can reproduce the result.
+- **Phased** — intake, static triage, deep analysis, dynamic observation,
+  behavior map, report, and independent implementation plan.
+- **Tool-agnostic** — uses what is already available; optional tools are listed
+  explicitly and are never installed automatically.
+- **OpenCode-native** — follows the V2 skill format with `SKILL.md`, references,
+  scripts, and templates.
+- **No bundled binaries** — the repository contains instructions and scripts,
+  not target samples or third-party code.
+
+## Requirements
+
+| Requirement | Required | Notes |
+|---|---:|---|
+| OpenCode V2 | Yes | Loads the skill and runs the agent workflow. |
+| Windows 10/11 | Yes for the scripts | The workflow is PE-centric. |
+| PowerShell 5.1+ or 7+ | Yes | Scripts are tested with Windows PowerShell 5.1. |
+| Authorization | Yes | Analyze only owned or explicitly authorized software. |
+| Isolated VM for execution | Yes | Snapshot first; no real credentials. |
+| Git | Recommended | Clone and update the skill. |
+| Ghidra, Sysinternals, Wireshark, 7-Zip | Optional | Deeper static, dynamic, network, and archive work. |
+
+Full details: `references/requirements-and-tooling.md`.
+
+## Applications and upstream projects
+
+The skill does not bundle or install these applications. They are optional
+upstream tools referenced by the workflow:
+
+| Project | Used for |
+|---|---|
+| [OpenCode](https://opencode.ai) | Agent host and skill format |
+| [PowerShell](https://github.com/PowerShell/PowerShell) | Orchestration and PE triage |
+| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Static analysis and decompilation |
+| [Sysinternals](https://learn.microsoft.com/sysinternals/) | Procmon, Process Explorer, Sigcheck, Autoruns, TCPView |
+| [Wireshark](https://www.wireshark.org/) | Network capture and protocol inspection |
+| [7-Zip](https://www.7-zip.org/) | Installer and archive inspection |
+| [x64dbg](https://github.com/x64dbg/x64dbg) | Authorized debugging |
+| [WinDbg](https://learn.microsoft.com/windows-hardware/drivers/debugger/) | Kernel and user-mode debugging |
+| [pefile](https://github.com/erocarrera/pefile) | PE parsing in Python |
+| [Capstone](https://github.com/capstone-engine/capstone) | Disassembly in Python |
+| [YARA](https://github.com/VirusTotal/yara) | Rule-based scanning |
+
+The complete list, including Detect It Easy, HxD, and official repository
+links, is in `references/requirements-and-tooling.md`.
+
 ## Safety first
 
 - Analyze only software you own or are authorized to test.
@@ -75,6 +129,7 @@ references/
   ghidra.md                      Ghidra UI and headless workflow
   dynamic-analysis.md            VM, Procmon, network, before/after snapshots
   reporting.md                   report structure and confidence levels
+  requirements-and-tooling.md    requirements, applications, upstream repos
 templates/
   report.md                      fill-in report template
 scripts/

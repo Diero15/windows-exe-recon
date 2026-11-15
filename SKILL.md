@@ -150,7 +150,9 @@ evidence/       redacted screenshots, logs, and artifacts
 
 ## Tool selection
 
-Prefer tools already installed. Ask before installing anything.
+Prefer tools already installed. Ask before installing anything. The full
+requirements, application list, and official upstream repositories are in
+`references/requirements-and-tooling.md`.
 
 - PowerShell 5.1+ for orchestration and PE triage.
 - Sysinternals: Sigcheck, Process Explorer, Procmon, Autoruns, TCPView.
@@ -190,6 +192,7 @@ Stop and ask the user before:
 - `references/ghidra.md`
 - `references/dynamic-analysis.md`
 - `references/reporting.md`
+- `references/requirements-and-tooling.md`
 - `templates/report.md`
 - `scripts/New-AnalysisWorkspace.ps1`
 - `scripts/Get-ExeTriage.ps1`
