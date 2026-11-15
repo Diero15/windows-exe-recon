@@ -1,0 +1,35 @@
+# Analysis workspaces
+analysis-*/
+00-intake/
+01-static/
+02-dynamic/
+03-ghidra/
+04-report/
+evidence/
+
+# Target binaries and samples
+*.exe
+*.dll
+*.sys
+*.scr
+*.cpl
+*.ocx
+*.bin
+*.pdb
+*.zip
+*.7z
+*.rar
+
+# Local secrets and environment files
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Editor and OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

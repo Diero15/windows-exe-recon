@@ -1,0 +1,120 @@
+# Windows EXE Recon
+
+A portable [OpenCode](https://opencode.ai) skill for authorized, defensive
+analysis of Windows executables. It helps an agent triage a PE file, map its
+behavior, record evidence, and plan an independent reimplementation without
+copying code, assets, or branding.
+
+The skill is target-agnostic. It contains no sample-specific paths, product
+names, or reverse-engineering results.
+
+## Safety first
+
+- Analyze only software you own or are authorized to test.
+- Treat unknown binaries as potentially malicious.
+- Execute unknown binaries only inside an isolated VM or sandbox.
+- Do not bypass DRM, licensing, authentication, activation, or anti-cheat.
+- Do not copy code, decompiled code, assets, icons, logos, or text.
+- Ask before installing tools, enabling network access, or publishing results.
+
+See `SKILL.md` and `references/safety-and-scope.md`.
+
+## Install
+
+### Global OpenCode skill
+
+Copy this directory to:
+
+```text
+Windows: %USERPROFILE%\.config\opencode\skills\windows-exe-recon
+macOS/Linux: ~/.config/opencode/skills/windows-exe-recon
+```
+
+The resulting layout must contain `SKILL.md`:
+
+```text
+~/.config/opencode/skills/windows-exe-recon/
+├── SKILL.md
+├── references/
+├── scripts/
+└── templates/
+```
+
+### Project skill
+
+Copy the directory to `.opencode/skills/windows-exe-recon` inside a project, or
+add this repository path to the `skills` array in `opencode.jsonc`:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": [
+    "C:/path/to/windows-exe-recon"
+  ]
+}
+```
+
+### Load the skill
+
+Mention it explicitly:
+
+```text
+Use @windows-exe-recon to analyze C:\Samples\app.exe.
+Do not execute it on the host. Start with static triage.
+```
+
+OpenCode can also advertise the skill automatically from its description.
+
+## What is included
+
+```text
+SKILL.md                         workflow and safety contract
+references/
+  safety-and-scope.md            authorization, isolation, malware handling
+  static-triage.md               PE, imports, strings, signatures, packers
+  ghidra.md                      Ghidra UI and headless workflow
+  dynamic-analysis.md            VM, Procmon, network, before/after snapshots
+  reporting.md                   report structure and confidence levels
+templates/
+  report.md                      fill-in report template
+scripts/
+  New-AnalysisWorkspace.ps1      create evidence folders and record hashes
+  Get-ExeTriage.ps1              static PE inventory as JSON or text
+  Get-StringSignals.ps1          extract interesting ASCII/UTF-16 strings
+  Invoke-GhidraHeadless.ps1      wrapper for analyzeHeadless
+```
+
+## Requirements
+
+- Windows PowerShell 5.1 or PowerShell 7+.
+- Optional: Ghidra, Sysinternals, Wireshark, 7-Zip, x64dbg/WinDbg.
+- The scripts are read-only with respect to the target. They do not execute it.
+
+## Quick start
+
+```powershell
+# Create an evidence workspace and record the target hash.
+.\scripts\New-AnalysisWorkspace.ps1 -Target C:\Samples\app.exe -Out .\analysis-app
+
+# Static inventory.
+.\scripts\Get-ExeTriage.ps1 -Path C:\Samples\app.exe -OutFile .\analysis-app\01-static\triage.json
+
+# Interesting strings.
+.\scripts\Get-StringSignals.ps1 -Path C:\Samples\app.exe -OutDir .\analysis-app\01-static
+
+# Optional: Ghidra headless import and analysis.
+.\scripts\Invoke-GhidraHeadless.ps1 `
+  -Target C:\Samples\app.exe `
+  -ProjectDir .\analysis-app\03-ghidra `
+  -ProjectName app-recon
+```
+
+## License
+
+MIT. See `LICENSE`.
+
+## Contributing
+
+Keep the skill generic. Do not commit target binaries, customer data, secrets,
+or product-specific analysis. Add new techniques as reusable guidance, not as
+findings about a single executable.
