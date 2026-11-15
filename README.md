@@ -105,7 +105,7 @@ This installs globally to:
 3. Double-click `install.cmd`.
 
 The ZIP also contains `install.ps1` if you prefer PowerShell. For a versioned
-snapshot, use the tagged archive after a release tag exists:
+snapshot, use the tagged archive:
 
 ```text
 https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.0.zip
