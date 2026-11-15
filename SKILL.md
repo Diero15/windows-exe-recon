@@ -12,6 +12,10 @@ independently reimplement a Windows executable (`.exe`, and by extension
 `.dll`, `.sys`, or another PE file). It is a workflow for authorized,
 defensive, clean-room analysis.
 
+> This is a demo/reference workflow, not a certified security product. It is
+> provided as is, without warranty. See `DISCLAIMER.md` and `SECURITY.md` in the
+> repository for the full disclaimer, liability limits, and reporting policy.
+
 ## Contract
 
 - Analyze only software the user owns or is explicitly authorized to test.
@@ -194,6 +198,8 @@ Stop and ask the user before:
 - `references/reporting.md`
 - `references/requirements-and-tooling.md`
 - `templates/report.md`
+- `DISCLAIMER.md`
+- `SECURITY.md`
 - `scripts/New-AnalysisWorkspace.ps1`
 - `scripts/Get-ExeTriage.ps1`
 - `scripts/Get-StringSignals.ps1`

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 - 2026-11-14
+
+- Add README banner and ASCII banner.
+- Add demo/reference status.
+- Add security and responsibility notices.
+- Add `DISCLAIMER.md` with warranty and liability limits.
+- Update `SECURITY.md` and `SKILL.md` with the demo disclaimer.
+
 ## 1.0.0 - 2026-11-14
 
 - Initial public release.

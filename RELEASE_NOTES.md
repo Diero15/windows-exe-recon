@@ -1,8 +1,11 @@
-# Windows EXE Recon v1.0.0
+# Windows EXE Recon v1.0.1
 
 A portable OpenCode skill for authorized, defensive analysis of Windows
 executables: static triage, Ghidra guidance, VM-based dynamic observation,
 behavior mapping, and an independent reimplementation plan.
+
+> **Demo / reference workflow.** Not a certified malware-analysis or forensic
+> product. Provided as is, without warranty. See `DISCLAIMER.md`.
 
 ## Install from the ZIP
 
@@ -10,7 +13,7 @@ If the release asset `windows-exe-recon.zip` is attached, download it.
 Otherwise download the tagged source ZIP:
 
 ```text
-https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.0.zip
+https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.1.zip
 ```
 
 1. Extract the ZIP.

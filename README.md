@@ -1,5 +1,17 @@
 # Windows EXE Recon
 
+![Windows EXE Recon](assets/banner.svg)
+
+> [!WARNING]
+> **Demo / reference workflow.** This repository is a demonstration, not a
+> certified malware-analysis or forensic product. Use it only on software you
+> own or are authorized to test, execute unknown binaries only in an isolated
+> VM, and do not use it to bypass protections. It is provided **as is**, with
+> no warranty and with the liability limits in [`DISCLAIMER.md`](DISCLAIMER.md).
+> See also [`SECURITY.md`](SECURITY.md).
+
+**Status:** demo / reference workflow · **License:** MIT · **No warranty**
+
 A portable [OpenCode](https://opencode.ai) skill for authorized, defensive
 analysis of Windows executables. It helps an agent triage a PE file, map its
 behavior, record evidence, and plan an independent reimplementation without
@@ -7,6 +19,23 @@ copying code, assets, or branding.
 
 The skill is target-agnostic. It contains no sample-specific paths, product
 names, or reverse-engineering results.
+
+<details>
+<summary>ASCII banner</summary>
+
+```text
+        .-----.
+       /  .-.  \      WINDOWS EXE RECON
+      |  ( 0 )  |     authorized analysis · clean-room behavior mapping
+       \  '-'  /      DEMO / REFERENCE WORKFLOW
+        '-----'
+          |
+          '--->  static triage · Ghidra · VM dynamics · evidence · report
+
+  MIT · NO WARRANTY · USE ONLY ON AUTHORIZED SOFTWARE
+```
+
+</details>
 
 ## Characteristics
 
@@ -76,6 +105,22 @@ links, is in `references/requirements-and-tooling.md`.
 
 See `SKILL.md` and `references/safety-and-scope.md`.
 
+## Security and responsibility
+
+This project is a **demo/reference workflow**, not a certified security
+product. It may miss behavior, produce incomplete evidence, or return false
+positives. You are responsible for:
+
+- having authorization for the target;
+- isolating unknown binaries in a disposable VM;
+- protecting personal, customer, and confidential data;
+- complying with licenses, contracts, and applicable law;
+- reviewing any script before running it.
+
+The authors and contributors accept no liability for misuse, damage, data loss,
+or legal consequences. Read the full [`DISCLAIMER.md`](DISCLAIMER.md) and the
+[`SECURITY.md`](SECURITY.md) policy before use.
+
 ## Install
 
 ### One command (recommended)
@@ -108,7 +153,7 @@ The ZIP also contains `install.ps1` if you prefer PowerShell. For a versioned
 snapshot, use the tagged archive:
 
 ```text
-https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.0.zip
+https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.1.zip
 ```
 
 ### From a clone
@@ -215,6 +260,9 @@ The resulting layout must contain `SKILL.md`:
 
 ```text
 SKILL.md                         workflow and safety contract
+DISCLAIMER.md                    demo status, warranty, and liability
+assets/banner.svg                README banner
+assets/banner.txt                ASCII banner
 install.ps1                      one-command installer
 install.cmd                      Windows launcher for the installer
 package.ps1                      build the release ZIP locally

@@ -1,0 +1,9 @@
+        .-----.
+       /  .-.  \      WINDOWS EXE RECON
+      |  ( 0 )  |     authorized analysis · clean-room behavior mapping
+       \  '-'  /      DEMO / REFERENCE WORKFLOW
+        '-----'
+          |
+          '--->  static triage · Ghidra · VM dynamics · evidence · report
+
+  MIT · NO WARRANTY · USE ONLY ON AUTHORIZED SOFTWARE

@@ -11,8 +11,8 @@ copied to `.github/workflows/release.yml`.
 3. Create and push a version tag:
 
 ```powershell
-git tag -a v1.0.0 -m "Windows EXE Recon v1.0.0"
-git push origin v1.0.0
+git tag -a v1.0.1 -m "Windows EXE Recon v1.0.1"
+git push origin v1.0.1
 ```
 
 The workflow builds `windows-exe-recon.zip` and creates a GitHub release with
@@ -29,8 +29,8 @@ Build the ZIP locally:
 Create the release with GitHub CLI:
 
 ```powershell
-gh release create v1.0.0 .\dist\windows-exe-recon.zip `
-  --title "Windows EXE Recon v1.0.0" `
+gh release create v1.0.1 .\dist\windows-exe-recon.zip `
+  --title "Windows EXE Recon v1.0.1" `
   --notes-file RELEASE_NOTES.md
 ```
 
@@ -42,7 +42,7 @@ Or create the release from the GitHub web UI and upload
 Even without a GitHub Release, a tagged source ZIP is downloadable:
 
 ```text
-https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.0.zip
+https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.1.zip
 ```
 
 Extract it and double-click `install.cmd`.
