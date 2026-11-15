@@ -78,9 +78,75 @@ See `SKILL.md` and `references/safety-and-scope.md`.
 
 ## Install
 
-### Global OpenCode skill
+### Windows: one command
 
-Copy this directory to:
+```powershell
+git clone https://github.com/Diero15/windows-exe-recon.git
+cd windows-exe-recon
+.\install.cmd
+```
+
+Or from PowerShell:
+
+```powershell
+.\install.ps1
+```
+
+The installer:
+
+- copies `SKILL.md`, `references`, `scripts`, and `templates` to
+  `%USERPROFILE%\.config\opencode\skills\windows-exe-recon`;
+- does not require administrator rights;
+- does not install analysis tools;
+- does not execute the target binary.
+
+If you downloaded the ZIP, extract it and double-click `install.cmd`.
+
+### Project-local
+
+```powershell
+.\install.ps1 -Project C:\path\to\project
+```
+
+This installs to `<project>\.opencode\skills\windows-exe-recon`.
+
+### Custom destination
+
+```powershell
+.\install.ps1 -Destination C:\path\to\skills\windows-exe-recon
+```
+
+Use `-Force` to update an existing installation:
+
+```powershell
+git pull
+.\install.ps1 -Force
+```
+
+### Uninstall
+
+```powershell
+.\install.ps1 -Uninstall
+```
+
+For a project or custom destination, pass the same `-Project` or
+`-Destination` used during installation.
+
+### Load the skill
+
+Mention it explicitly:
+
+```text
+Use @windows-exe-recon to analyze C:\Samples\app.exe.
+Do not execute it on the host. Start with static triage.
+```
+
+OpenCode can also advertise the skill automatically from its description. If it
+does not appear immediately, run `/reload`.
+
+### Manual installation
+
+If you prefer to copy files manually, place this directory at:
 
 ```text
 Windows: %USERPROFILE%\.config\opencode\skills\windows-exe-recon
@@ -97,35 +163,12 @@ The resulting layout must contain `SKILL.md`:
 └── templates/
 ```
 
-### Project skill
-
-Copy the directory to `.opencode/skills/windows-exe-recon` inside a project, or
-add this repository path to the `skills` array in `opencode.jsonc`:
-
-```jsonc
-{
-  "$schema": "https://opencode.ai/config.json",
-  "skills": [
-    "C:/path/to/windows-exe-recon"
-  ]
-}
-```
-
-### Load the skill
-
-Mention it explicitly:
-
-```text
-Use @windows-exe-recon to analyze C:\Samples\app.exe.
-Do not execute it on the host. Start with static triage.
-```
-
-OpenCode can also advertise the skill automatically from its description.
-
 ## What is included
 
 ```text
 SKILL.md                         workflow and safety contract
+install.ps1                      one-command installer
+install.cmd                      Windows launcher for the installer
 references/
   safety-and-scope.md            authorization, isolation, malware handling
   static-triage.md               PE, imports, strings, signatures, packers
