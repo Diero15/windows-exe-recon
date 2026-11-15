@@ -1,3 +1,6 @@
+# Distribution output
+dist/
+
 # Analysis workspaces
 analysis-*/
 00-intake/

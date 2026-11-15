@@ -78,7 +78,40 @@ See `SKILL.md` and `references/safety-and-scope.md`.
 
 ## Install
 
-### Windows: one command
+### One command (recommended)
+
+PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/Diero15/windows-exe-recon/main/install.ps1 | iex
+```
+
+CMD:
+
+```bat
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/Diero15/windows-exe-recon/main/install.ps1 | iex"
+```
+
+This installs globally to:
+
+```text
+%USERPROFILE%\.config\opencode\skills\windows-exe-recon
+```
+
+### Download the ZIP
+
+1. Open <https://github.com/Diero15/windows-exe-recon/archive/refs/heads/main.zip>.
+2. Extract it.
+3. Double-click `install.cmd`.
+
+The ZIP also contains `install.ps1` if you prefer PowerShell. For a versioned
+snapshot, use the tagged archive after a release tag exists:
+
+```text
+https://github.com/Diero15/windows-exe-recon/archive/refs/tags/v1.0.0.zip
+```
+
+### From a clone
 
 ```powershell
 git clone https://github.com/Diero15/windows-exe-recon.git
@@ -86,7 +119,7 @@ cd windows-exe-recon
 .\install.cmd
 ```
 
-Or from PowerShell:
+Or:
 
 ```powershell
 .\install.ps1
@@ -94,18 +127,17 @@ Or from PowerShell:
 
 The installer:
 
-- copies `SKILL.md`, `references`, `scripts`, and `templates` to
-  `%USERPROFILE%\.config\opencode\skills\windows-exe-recon`;
+- copies `SKILL.md`, `references`, `scripts`, and `templates` to the skill
+  folder;
 - does not require administrator rights;
 - does not install analysis tools;
 - does not execute the target binary.
 
-If you downloaded the ZIP, extract it and double-click `install.cmd`.
-
 ### Project-local
 
 ```powershell
-.\install.ps1 -Project C:\path\to\project
+cd C:\path\to\project
+C:\path\to\windows-exe-recon\install.ps1 -Project
 ```
 
 This installs to `<project>\.opencode\skills\windows-exe-recon`.
@@ -113,7 +145,7 @@ This installs to `<project>\.opencode\skills\windows-exe-recon`.
 ### Custom destination
 
 ```powershell
-.\install.ps1 -Destination C:\path\to\skills\windows-exe-recon
+.\install.ps1 -TargetDir C:\path\to\skills\windows-exe-recon
 ```
 
 Use `-Force` to update an existing installation:
@@ -129,8 +161,18 @@ git pull
 .\install.ps1 -Uninstall
 ```
 
-For a project or custom destination, pass the same `-Project` or
-`-Destination` used during installation.
+Project-local:
+
+```powershell
+cd C:\path\to\project
+C:\path\to\windows-exe-recon\install.ps1 -Project -Uninstall
+```
+
+Custom destination:
+
+```powershell
+.\install.ps1 -TargetDir C:\path\to\skills\windows-exe-recon -Uninstall
+```
 
 ### Load the skill
 
@@ -143,6 +185,12 @@ Do not execute it on the host. Start with static triage.
 
 OpenCode can also advertise the skill automatically from its description. If it
 does not appear immediately, run `/reload`.
+
+Verify the global installation:
+
+```powershell
+Test-Path "$env:USERPROFILE\.config\opencode\skills\windows-exe-recon\SKILL.md"
+```
 
 ### Manual installation
 
@@ -169,6 +217,12 @@ The resulting layout must contain `SKILL.md`:
 SKILL.md                         workflow and safety contract
 install.ps1                      one-command installer
 install.cmd                      Windows launcher for the installer
+package.ps1                      build the release ZIP locally
+VERSION                          current skill version
+CHANGELOG.md                     release history
+RELEASE_NOTES.md                 notes used by the GitHub release
+RELEASING.md                     release workflow and manual steps
+ci/release.yml                   GitHub Actions release template
 references/
   safety-and-scope.md            authorization, isolation, malware handling
   static-triage.md               PE, imports, strings, signatures, packers
@@ -203,6 +257,21 @@ scripts/
   -ProjectDir .\analysis-app\03-ghidra `
   -ProjectName app-recon
 ```
+
+## Releases
+
+The automated release workflow is provided as a template at `ci/release.yml`.
+It becomes active when copied to `.github/workflows/release.yml`. See
+`RELEASING.md` for the web-UI and token options.
+
+Build the release ZIP locally at any time:
+
+```powershell
+.\package.ps1
+```
+
+The ZIP contains `install.cmd` and `install.ps1`, so the downloaded package can
+be installed without cloning the repository.
 
 ## License
 
