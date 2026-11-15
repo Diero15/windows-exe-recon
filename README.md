@@ -40,6 +40,9 @@ names, or reverse-engineering results.
 
 Full details: `references/requirements-and-tooling.md`.
 
+The PowerShell scripts are read-only with respect to the target; they never
+execute it.
+
 ## Applications and upstream projects
 
 The skill does not bundle or install these applications. They are optional
@@ -138,12 +141,6 @@ scripts/
   Get-StringSignals.ps1          extract interesting ASCII/UTF-16 strings
   Invoke-GhidraHeadless.ps1      wrapper for analyzeHeadless
 ```
-
-## Requirements
-
-- Windows PowerShell 5.1 or PowerShell 7+.
-- Optional: Ghidra, Sysinternals, Wireshark, 7-Zip, x64dbg/WinDbg.
-- The scripts are read-only with respect to the target. They do not execute it.
 
 ## Quick start
 
