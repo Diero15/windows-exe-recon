@@ -20,7 +20,7 @@ copying code, assets, or branding.
 The skill is target-agnostic. It contains no sample-specific paths, product
 names, or reverse-engineering results.
 
-<details>
+
 <summary>ASCII banner</summary>
 
 ```text
@@ -35,7 +35,6 @@ names, or reverse-engineering results.
   MIT · NO WARRANTY · USE ONLY ON AUTHORIZED SOFTWARE
 ```
 
-</details>
 
 ## Characteristics
 
