@@ -22,7 +22,7 @@ names, or reverse-engineering results.
 
 
 
-```
+
         .-----.
        /  .-.  \      WINDOWS EXE RECON
       |  ( 0 )  |     authorized analysis · clean-room behavior mapping
@@ -32,7 +32,7 @@ names, or reverse-engineering results.
           '--->  static triage · Ghidra · VM dynamics · evidence · report
 
   MIT · NO WARRANTY · USE ONLY ON AUTHORIZED SOFTWARE
-```
+
 
 
 ## Characteristics
