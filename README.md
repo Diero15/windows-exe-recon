@@ -21,7 +21,6 @@ The skill is target-agnostic. It contains no sample-specific paths, product
 names, or reverse-engineering results.
 
 
-<summary>ASCII banner</summary>
 
 ```text
         .-----.
