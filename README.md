@@ -22,7 +22,7 @@ names, or reverse-engineering results.
 
 
 
-```text
+```
         .-----.
        /  .-.  \      WINDOWS EXE RECON
       |  ( 0 )  |     authorized analysis · clean-room behavior mapping
